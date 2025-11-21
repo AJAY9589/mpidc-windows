@@ -111,30 +111,51 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host ""
     Write-Host "Your application is ready:" -ForegroundColor Green
     Write-Host ""
-    Write-Host "Executable:" -ForegroundColor Yellow
-    Write-Host "  src-tauri\target\release\mpidc-touri.exe" -ForegroundColor White
-    Write-Host ""
-    Write-Host "Installers:" -ForegroundColor Yellow
     
-    if (Test-Path "src-tauri\target\release\bundle\msi") {
-        $msiFiles = Get-ChildItem "src-tauri\target\release\bundle\msi\*.msi"
-        foreach ($file in $msiFiles) {
-            Write-Host "  $($file.FullName)" -ForegroundColor White
-        }
-    }
+    Write-Host "📦 INSTALLERS (Recommended for Distribution):" -ForegroundColor Cyan
+    Write-Host ""
     
     if (Test-Path "src-tauri\target\release\bundle\nsis") {
         $nsisFiles = Get-ChildItem "src-tauri\target\release\bundle\nsis\*.exe"
         foreach ($file in $nsisFiles) {
-            Write-Host "  $($file.FullName)" -ForegroundColor White
+            Write-Host "  ⭐ NSIS Installer (Recommended for Users):" -ForegroundColor Green
+            Write-Host "     $($file.FullName)" -ForegroundColor White
+            Write-Host "     → Creates desktop shortcut" -ForegroundColor Gray
+            Write-Host "     → Creates start menu entry" -ForegroundColor Gray
+            Write-Host "     → Installation wizard" -ForegroundColor Gray
+            Write-Host ""
         }
     }
     
+    if (Test-Path "src-tauri\target\release\bundle\msi") {
+        $msiFiles = Get-ChildItem "src-tauri\target\release\bundle\msi\*.msi"
+        foreach ($file in $msiFiles) {
+            Write-Host "  📋 MSI Installer (For Enterprise):" -ForegroundColor Yellow
+            Write-Host "     $($file.FullName)" -ForegroundColor White
+            Write-Host "     → Group Policy deployment" -ForegroundColor Gray
+            Write-Host "     → Professional installer" -ForegroundColor Gray
+            Write-Host ""
+        }
+    }
+    
+    Write-Host "💻 Standalone Executable (No Installation):" -ForegroundColor Cyan
+    Write-Host "  src-tauri\target\release\mpidc-touri.exe" -ForegroundColor White
+    Write-Host "  → No desktop shortcut" -ForegroundColor Gray
+    Write-Host "  → Just double-click to run" -ForegroundColor Gray
     Write-Host ""
-    Write-Host "Next steps:" -ForegroundColor Cyan
-    Write-Host "  1. Test the executable" -ForegroundColor White
-    Write-Host "  2. Install using one of the installers" -ForegroundColor White
-    Write-Host "  3. Distribute to your users" -ForegroundColor White
+    
+    Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+    Write-Host "📚 Next Steps:" -ForegroundColor Cyan
+    Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "  1. ✅ Use the NSIS installer for distribution" -ForegroundColor White
+    Write-Host "     (Creates desktop icon & start menu entry)" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "  2. 🧪 Test the installer on a clean machine" -ForegroundColor White
+    Write-Host ""
+    Write-Host "  3. 🚚 Share with your users" -ForegroundColor White
+    Write-Host ""
+    Write-Host "📖 Read: WINDOWS-INSTALLER-GUIDE.md for details" -ForegroundColor Yellow
     Write-Host ""
     
 } else {

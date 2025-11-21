@@ -26,6 +26,37 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["msi", "nsis"]
+    "targets": ["msi", "nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "",
+      "wix": {
+        "language": "en-US",
+        "template": null,
+        "fragmentPaths": [],
+        "componentRefs": []
+      },
+      "nsis": {
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico",
+        "installMode": "currentUser",
+        "languages": ["en-US"],
+        "displayLanguageSelector": false,
+        "compression": "lzma",
+        "startMenuFolder": "MPIDC Invoice System",
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true
+      }
+    },
+    "shortDescription": "MPIDC Invoice Management System",
+    "longDescription": "Desktop application for MPIDC Invoice Management System with automatic internet connectivity checking."
   }
 }

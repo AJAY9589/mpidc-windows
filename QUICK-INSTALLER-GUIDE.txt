@@ -1,0 +1,159 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║              🪟 WINDOWS INSTALLER - QUICK GUIDE                              ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📋 PROBLEM: You want desktop icon & proper installation, not just .exe file
+
+✅ SOLUTION: Use the NSIS or MSI installer (not the standalone .exe)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 WHICH INSTALLER TO USE?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After running: npm run build
+
+You'll get 3 FILES:
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ 1. NSIS Installer (RECOMMENDED) ⭐⭐⭐⭐⭐                                    │
+├──────────────────────────────────────────────────────────────────────────┤
+│  File: MPIDC Invoice System_0.1.0_x64-setup.exe                          │
+│  Location: src-tauri/target/release/bundle/nsis/                         │
+│                                                                           │
+│  ✅ Creates desktop shortcut automatically                                │
+│  ✅ Creates start menu entry                                              │
+│  ✅ Modern installation wizard                                            │
+│  ✅ Easy uninstall                                                        │
+│  ✅ Best for: End users, general distribution                            │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ 2. MSI Installer (For Enterprise) ⭐⭐⭐⭐                                   │
+├──────────────────────────────────────────────────────────────────────────┤
+│  File: MPIDC Invoice System_0.1.0_x64_en-US.msi                          │
+│  Location: src-tauri/target/release/bundle/msi/                          │
+│                                                                           │
+│  ✅ Creates desktop shortcut                                              │
+│  ✅ Creates start menu entry                                              │
+│  ✅ Group Policy deployment                                               │
+│  ✅ Professional installer                                                │
+│  ✅ Best for: Enterprise, IT departments                                 │
+└──────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ 3. Standalone EXE (No Installation) ⭐⭐                                   │
+├──────────────────────────────────────────────────────────────────────────┤
+│  File: mpidc-touri.exe                                                    │
+│  Location: src-tauri/target/release/                                      │
+│                                                                           │
+│  ❌ NO desktop shortcut                                                   │
+│  ❌ NO start menu entry                                                   │
+│  ✅ Just double-click to run                                              │
+│  ✅ Best for: Testing, portable use                                      │
+└──────────────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 HOW TO BUILD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  IMPORTANT: Must build on WINDOWS to create Windows installers!
+
+On Windows Machine:
+
+  1. Install Prerequisites:
+     - Node.js from https://nodejs.org/
+     - Rust: Invoke-WebRequest -Uri https://win.rustup.rs/x86_64 -OutFile rustup-init.exe; .\rustup-init.exe
+     - Visual Studio Build Tools: winget install Microsoft.VisualStudio.2022.BuildTools
+
+  2. Build the app:
+     cd mpidc-touri
+     npm install
+     npm run build
+
+  3. Wait 15-30 minutes (first time only)
+
+  4. Find your installers:
+     src-tauri/target/release/bundle/nsis/    ← NSIS installer ⭐
+     src-tauri/target/release/bundle/msi/     ← MSI installer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 USER INSTALLATION EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+With NSIS Installer:
+
+  1. User downloads: MPIDC Invoice System_0.1.0_x64-setup.exe
+  2. Double-clicks the file
+  3. Installation wizard opens
+  4. User clicks: Next → Install
+  5. ✅ Desktop icon appears automatically
+  6. ✅ Start Menu entry created
+  7. User can launch from desktop or Start Menu
+  8. To uninstall: Windows Settings → Apps → Uninstall
+
+With Standalone .exe:
+
+  1. User downloads: mpidc-touri.exe
+  2. Saves to Downloads folder
+  3. ❌ NO desktop icon
+  4. ❌ NO start menu entry
+  5. Must navigate to Downloads to launch every time
+  6. User must manually create shortcut if wanted
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 WHAT TO DISTRIBUTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Recommended for Most Users:
+
+  Primary:   MPIDC Invoice System_0.1.0_x64-setup.exe  (NSIS)
+             ↑
+             Share this file with users
+
+  Optional:  mpidc-touri.exe (Standalone)
+             ↑
+             For users who want portable version
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ WHAT'S BEEN CONFIGURED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+I've already configured your tauri.conf.json to:
+
+  ✅ Create desktop shortcut automatically
+  ✅ Create start menu entry
+  ✅ Use custom icon throughout Windows
+  ✅ Build both MSI and NSIS installers
+  ✅ Set app name to "MPIDC Invoice System"
+  ✅ Create start menu folder
+
+No additional configuration needed! Just build and distribute!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 MORE INFO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  WINDOWS-INSTALLER-GUIDE.md   → Complete guide with all details
+  INSTALLER-COMPARISON.md       → Compare all 3 installer types
+  BUILD_WINDOWS.md              → How to build on Windows
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 QUICK SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Problem:     Standalone .exe has no desktop icon or installer
+  Solution:    Use NSIS installer (*-setup.exe in nsis folder)
+  Build on:    Windows machine (not Mac)
+  Command:     npm run build
+  Time:        15-30 minutes (first time)
+  Result:      Professional installer with desktop icon ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 You're all set! The configuration is done. Just build on Windows and share
+   the NSIS installer with your users for a professional installation experience!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
