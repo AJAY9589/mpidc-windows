@@ -1,8 +1,6 @@
 // Prevents additional console window on Windows in release builds
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::Manager;
-
 #[tauri::command]
 fn check_internet_connection() -> bool {
     // Try to connect to a reliable endpoint
